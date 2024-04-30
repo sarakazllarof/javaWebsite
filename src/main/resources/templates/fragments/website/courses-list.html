@@ -1,0 +1,40 @@
+<div th:fragment="courses-list" class="container">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-primary px-3">Courses</h6>
+            <h1 class="mb-5">Subscribe to one of our courses</h1>
+        </div>
+        <div class="row g-4 justify-content-center" th:if="${courses != null && courses.size() > 0}">
+            <div class="col-lg-4 col-md-6" th:each="course: ${courses}">
+                <div class="course-item bg-light">
+                    <div class="position-relative overflow-hidden">
+                        <img class="img-fluid" th:src="${course.image}" th:alt="${course.name}">
+                        <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+                            <a th:href="@{'/courses/detail/' + ${course.id}}" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px;">Read More</a>
+                            <!--<a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Join Now</a>-->
+                        </div>
+                    </div>
+                    <div class="text-center p-4 pb-0">
+                        <h3 class="mb-0" th:if="${course.discountPrice != null}"><del th:text="@{${course.price} + '$'}"></del><span style="margin-left: 1rem;" th:text="@{${course.discountPrice} + '$'}"></span></h3>
+                        <h3 class="mb-0" th:if="${course.discountPrice == null}"><span th:text="@{${course.price} + '$'}"></span></h3>
+                        <h5 class="mb-4" th:text="${course.name}"></h5>
+                    </div>
+                    <div class="d-flex border-top">
+                        <!--<small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>John Doe</small>-->
+                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i><span th:text="@{${course.duration} + ' Hrs'}"></span></small>
+                        <!--<small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>30 Students</small>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nese nuk eshte karikuar nga kontrolleri ose nuk kam asnje kurs ne database, shfaq nje mesazh -->
+        <div class="row" th:if="${courses == null || courses.size() < 1}">
+            <div class="col-12">
+                <div class="alert alert-warning" role="alert">
+                    There are no courses in discount!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<div th:fragment="subscription-list" class="container">
+
+    <div class="row g-4">
+        <div class="col-12 wow">
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Card Name</th>
+                    <th>Course</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item : ${subscriptions}">
+                    <td th:text="${item.email}"></td>
+                    <td th:text="${item.firstName}"></td>
+                    <td th:text="${item.lastName}"></td>
+                    <td th:text="${item.cardNumber}"></td>
+                    <td th:text="${item.course.name}"></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+
+                            <form action="/admin/delete-subscription" method="post">
+                                <input type="hidden" name="id" th:value="${item.id}"/>
+                                <button type="submit" class="btn btn-danger"><i class="ui-icon-trash"></i>Delete</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                <tr th:if="${subscriptions == null || subscriptions.size() < 1}">
+                    <td colspan="6">No subscriptions found in database</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

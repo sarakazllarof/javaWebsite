@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<!-- E RENDESISHME: PERDORIMI I FRAGMENTEVE ME LEJON TE KEME RIPERDORUESHMERI TE TEMPLATEVE HTML, GJITHASHTU FILET HTML BEHEN ME TE LEXUESHME, DHE ME E RENDESISHMJA ESHTE QE NDRYSHIMET BEHEN NE NJE PIKE TE VETEM -->
+<!-- E RENDESISHME: NGJASON ME KONCEPTIN E KOMPONENTEVE NE ANGULAR, VUE.JS OSE REACT. NDRYSHIMI ESHTE QE NE THYMELEAF, RENDERIZIMI BEHET NE SERVER -->
+
+<!-- Po perdor konceptin e fragmenteve -->
+<!-- th:replace do te zevendesoje permbajtjen e head tagut head me ate qe kam vendosur brenda head.html -->
+<!-- E beje kete logjike per te mos perseritur permbatjen e head. Analogjia me angular eshte thirrja e nje komponenti brenda nje komponenti tjeter -->
+<!-- Sintaksa e thirrjes se nje fragmenti eshte: th:replace="<path bashke me emrin e filet duke nisur nga folderi fragments> :: <emri i fragmentit ( ne rastin tim fragmenti quhet head si emri i file)>" -->
+<head th:replace="fragments/shared/head :: head"></head>
+
+<body>
+<!-- Navbar Start -->
+<nav th:replace="fragments/website/menu :: menu"></nav>
+<!-- Navbar End -->
+
+<!-- Carousel Start -->
+<div class="container-xxl py-5">
+    <div class="row" style="margin-top:20px">
+        <div class="col-4 offset-4">
+            <form th:action="@{/login}" method="post">
+                <fieldset>
+                    <h1>Please Sign In</h1>
+
+                    <div th:if="${param.error}">
+                        <div class="alert alert-danger">
+                            Invalid username and password.
+                        </div>
+                    </div>
+                    <div th:if="${param.logout}">
+                        <div class="alert alert-info">
+                            You have been logged out.
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" name="username" id="username" class="form-control"
+                               placeholder="UserName" required="true" autofocus="true"/>
+                    </div>
+                    <div class="form-group" style="margin-top: 1rem">
+                        <input type="password" name="password" id="password" class="form-control "
+                               placeholder="Password" required="true"/>
+                    </div>
+
+                    <div class="row" style="margin-top: 2rem;">
+                        <div class="col-12 text-center">
+                            <input type="submit" class="btn btn-primary" value="Log In"/>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Carousel End -->
+
+<!-- Footer Start -->
+<!-- I njejti koncept, perdor fragmentet per te mos perseritur footer -->
+<div th:replace="fragments/shared/footer :: footer"></div>
+<!-- Footer End -->
+
+<!-- Spinner Start -->
+<!-- I njejti koncept, perdor fragmentet per te mos perseritur loaderin -->
+<div th:replace="fragments/shared/loader :: loader"></div>
+<!-- Spinner End -->
+
+
+<div th:replace="fragments/shared/js :: js"></div>
+</body>
+</html>

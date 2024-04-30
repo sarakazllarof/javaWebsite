@@ -1,0 +1,83 @@
+<div class="container-fluid p-0 mb-5" th:fragment="course-detail">
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="img-fluid position-absolute w-100 h-100" th:src="${model.image}" th:alt="${model.name}" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h6 class="section-title bg-white text-start text-primary pe-3">Course Details</h6>
+                    <h1 class="mb-4" th:text="${model.name}"></h1>
+                    <p class="mb-4" th:text="${model.description}"></p>
+                    <div class="row gy-2 gx-4 mb-4">
+                        <div class="col-sm-6">
+                            <p class="mb-0">
+                                <i class="fa fa-dollar-sign text-primary me-2"></i>
+                                <span th:if="${model.discountPrice != null}"><del th:text="@{${model.price} + '$'}"></del><span style="margin-left: 1rem;" th:text="@{${model.discountPrice} + '$'}"></span></span>
+                                <span th:if="${model.discountPrice == null}"><span th:text="@{${model.price} + '$'}"></span></span>
+                            </p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0">
+                                <i class="fa fa-clock text-primary me-2"></i><span th:text="@{${model.duration} + ' Hrs'}"></span>
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <h6 class="section-title bg-white text-start text-primary pe-3">Subscribe</h6>
+                    <form action="/courses/subscribe" method="post"  th:object="${subscription}" >
+                        <div th:replace="fragments/shared/alert :: alert"></div>
+                        <!-- E RENDESISHME: Mban id-n e kursit i cili na duhet per të bërë subscription -->
+                        <!-- E RENDESISHME: Inputi eshte i fshehur, pra nuk mund te modifikohet dhe eshte e vetmja menyre per ta kaluar ne kontroller -->
+                        <input class="form-control" type="hidden" name="courseId" th:value="${model.id}">
+
+                        <div class="row">
+                            <div class="col-6">
+                                <!-- Email input -->
+                                <div class="form-outline mb-4">
+                                    <input type="text" id="form2Example1" th:field="*{firstName}" class="form-control" />
+                                    <label class="form-label" for="form2Example1">First Name</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <!-- Password input -->
+                                <div class="form-outline mb-4">
+                                    <input id="form2Example2" th:field="*{lastName}" class="form-control" />
+                                    <label class="form-label" for="form2Example2">Last Name</label>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <!-- Email input -->
+                                <div class="form-outline mb-4">
+                                    <input id="form2Example4" th:field="*{email}" class="form-control" />
+                                    <label class="form-label" for="form2Example4">Email</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <!-- Email input -->
+                                <div class="form-outline mb-4">
+                                    <input id="cardNUmber" th:field="*{cardNumber}" class="form-control" />
+                                    <label class="form-label" for="cardNUmber">Card Number</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit button -->
+                        <div class="row text-center">
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary py-3 px-5 mt-2">Subscribe</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

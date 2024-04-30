@@ -1,0 +1,29 @@
+<!-- Variabile courses eshte presente nese nga template qe kthehet nga nje kontroller, perdoret modelMap.put("courses", array list me kurset nga database) -->
+<div th:fragment="courses-slider" >
+  <!-- Kontrolloj qe variabile eshte prezente ne kontekst, pra eshte karikuar nga kontrolleri -->
+  <div th:if="${courses != null && courses.size() > 0}" class="owl-carousel header-carousel position-relative">
+    <div class="owl-carousel-item position-relative" th:each="course: ${courses}">
+      <img class="img-fluid" th:src="${course.image}" th:alt="${course.name}">
+      <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(24, 29, 56, .7);">
+        <div class="container">
+          <div class="row justify-content-start">
+            <div class="col-sm-10 col-lg-8">
+              <h1 class="display-3 text-white animated slideInDown" th:text="${course.name}"></h1>
+              <p class="fs-5 text-white mb-4 pb-2" th:text="${course.description}"></p>
+              <a th:href="@{'/courses/detail/' + ${course.id}}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nese nuk eshte karikuar nga kontrolleri ose nuk kam asnje kurs ne database, shfaq nje mesazh -->
+  <div class="row" th:if="${courses == null || courses.size() < 1}">
+    <div class="col-12">
+      <div class="alert alert-warning" role="alert">
+        There are no courses defined in database!
+      </div>
+    </div>
+  </div>
+</div>

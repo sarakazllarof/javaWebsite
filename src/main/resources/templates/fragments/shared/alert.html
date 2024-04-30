@@ -1,0 +1,6 @@
+<div class="row" th:fragment="alert">
+    <div class="col-12" th:if="${message}">
+        <div th:text="${message}" class="alert alert-warning" role="alert"></div>
+    </div>
+</div>
+

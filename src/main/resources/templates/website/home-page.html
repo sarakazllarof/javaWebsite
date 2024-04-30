@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<!-- E RENDESISHME: PERDORIMI I FRAGMENTEVE ME LEJON TE KEME RIPERDORUESHMERI TE TEMPLATEVE HTML, GJITHASHTU FILET HTML BEHEN ME TE LEXUESHME, DHE ME E RENDESISHMJA ESHTE QE NDRYSHIMET BEHEN NE NJE PIKE TE VETEM -->
+<!-- E RENDESISHME: NGJASON ME KONCEPTIN E KOMPONENTEVE NE ANGULAR, VUE.JS OSE REACT. NDRYSHIMI ESHTE QE NE THYMELEAF, RENDERIZIMI BEHET NE SERVER -->
+
+<!-- Po perdor konceptin e fragmenteve -->
+<!-- th:replace do te zevendesoje permbajtjen e head tagut head me ate qe kam vendosur brenda head.html -->
+<!-- E beje kete logjike per te mos perseritur permbatjen e head. Analogjia me angular eshte thirrja e nje komponenti brenda nje komponenti tjeter -->
+<!-- Sintaksa e thirrjes se nje fragmenti eshte: th:replace="<path bashke me emrin e filet duke nisur nga folderi fragments> :: <emri i fragmentit ( ne rastin tim fragmenti quhet head si emri i file)>" -->
+<head th:replace="fragments/shared/head :: head"></head>
+
+<body>
+<!-- Navbar Start -->
+<nav th:replace="fragments/website/menu :: menu"></nav>
+<!-- Navbar End -->
+
+
+<!-- Carousel Start -->
+<div class="container-fluid p-0 mb-5">
+    <!-- I njejti koncept, perdor fragmentet per te mos perseritur sliderin -->
+    <div th:replace="fragments/website/courses-slider :: courses-slider"></div>
+
+    <!--<div th:replace="fragments/shared/alert :: alert"></div>-->
+
+    <!-- I njejti koncept, perdor fragmentet per te mos perseritur sliderin -->
+    <div th:replace="fragments/website/courses-in-discount :: courses-in-discount"></div>
+</div>
+<!-- Carousel End -->
+
+<!-- Footer Start -->
+<!-- I njejti koncept, perdor fragmentet per te mos perseritur footer -->
+<div th:replace="fragments/shared/footer :: footer"></div>
+<!-- Footer End -->
+
+<!-- Spinner Start -->
+<!-- I njejti koncept, perdor fragmentet per te mos perseritur loaderin -->
+<div th:replace="fragments/shared/loader :: loader"></div>
+<!-- Spinner End -->
+
+
+<div th:replace="fragments/shared/js :: js"></div>
+</body>
+</html>

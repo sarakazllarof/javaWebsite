@@ -1,0 +1,75 @@
+<div class="container" th:fragment="course-form">
+    <form action="/admin/save-course" method="post"  th:object="${model}" >
+        <!-- E RENDESISHME: Mban id-n e kursit. Ne rast se eshte i ri, eshte null. Kur jemi ne modifikim eshte i mbushur -->
+        <!-- E RENDESISHME: Inputi eshte i fshehur, pra nuk mund te modifikohet dhe eshte e vetmja menyre per ta kaluar ne kontroller -->
+        <input class="form-control" type="hidden" th:field="*{id}">
+
+        <div class="row">
+            <div class="col-6">
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                    <input type="text" id="form2Example1" th:field="*{name}" class="form-control" />
+                    <label class="form-label" for="form2Example1">Name</label>
+                </div>
+            </div>
+            <div class="col-6">
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                    <input type="number"  id="form2Example2" th:field="*{price}" class="form-control" />
+                    <label class="form-label" for="form2Example2">Price</label>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                    <input type="number" id="form2Example4" th:field="*{duration}" class="form-control" />
+                    <label class="form-label" for="form2Example4">Duration</label>
+                </div>
+            </div>
+            <div class="col-6">
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                    <textarea id="form2Example3" th:field="*{description}" class="form-control" ></textarea>
+                    <label class="form-label" for="form2Example3">Description</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <div class="form-check">
+                    <input class="form-check-input" th:field="*{discount}" type="checkbox" value="" id="form2Example31" checked />
+                    <label class="form-check-label" for="form2Example31"> Discount </label>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-outline mb-4">
+                    <input type="number" id="form2Example4" th:field="*{discountPrice}" class="form-control" />
+                    <label class="form-label" for="form2Example4">Discount price</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="form-outline">
+                    <input id="image" th:field="*{image}" class="form-control" />
+                    <label class="form-label" for="image"> Image (Image should be in folder /resource/static/img) </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Submit button -->
+        <div class="row text-center">
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary btn-block mb-4">Save course</button>
+            </div>
+
+        </div>
+    </form>
+
+</div>

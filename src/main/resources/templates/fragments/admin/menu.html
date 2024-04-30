@@ -1,0 +1,22 @@
+<!-- Atributi th:fragment="<emri i fragmentit>" eshte deklarimi i nje fragmenti. Brenda ketij file mund te deklaroj disa por si praktike e mire eshte qe nje file te kete nje fragment -->
+<!-- Per ta therritur, psh ne home-page.html, perdorni <div th:replace="<path i fragmentit> :: <emri i fragmentit>"> -->
+<nav th:fragment="menu" class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+    <a href="/" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>eLEARNING</h2>
+    </a>
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a href="/" class="nav-item nav-link active">Home Page</a>
+            <a href="/admin" class="nav-item nav-link">Courses</a>
+            <a href="/admin/subscriptions" class="nav-item nav-link">Subscriptions</a>
+
+            <!-- Shfaq butonin e logout nese user eshte i loguar. Perdoret funksion nga thymeleaf spring security -->
+            <a class="nav-item nav-link" sec:authorize ="isAuthenticated()" th:href="@{/logout}">
+                Sign Out: <span sec:authentication="name"></span>
+            </a>
+        </div>
+    </div>
+</nav>
